@@ -7,7 +7,7 @@ if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
 	if($loginError == '') {
 		$sql = "SELECT id FROM felhasznalok WHERE felhasznalo = '".$_POST['felhasznalo']."' ";
 
-        if(!$result = $conn->query($sql)) echo $conn->error;
+        //if(!$result = $conn->query($sql)) echo $conn->error;
 
 		if ($result->num_rows > 0) {
 			
@@ -16,7 +16,7 @@ if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
 				if(md5($_POST['jelszo']) == $felhasznalok->get_jelszo()) {
 					$_SESSION["id"] = $row['id'];
 					$_SESSION["nev"] = $felhasznalok->get_nev();
-                    header('Location: index.php?page=ulesrend');
+                    header('Location: belepes.php?page=fooldal');
                     exit();
 				}
 				else $loginError .= 'Érvénytelen jelszó<br>';
@@ -37,7 +37,7 @@ if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
         <form action="belepes.php" method="POST">
             Felhasználónév: <input type="text" name="felhasznalo">
             Jelszó: <input type="password" name="jelszo">
-            <input value="Belépés" type="submit">
+            <input value="Belépés" type="submit" name="submit">
         </form>
     </body>
 </html>
