@@ -1,21 +1,21 @@
 <?php
 
-if(isset($_POST['user']) and isset($_POST['pw'])) {
+if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
 	$loginError = '';
-	if(strlen($_POST['user']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";
-	if(strlen($_POST['pw']) == 0) $loginError .= "Nem írtál be jelszót<br>";
+	if(strlen($_POST['felhasznalo']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";
+	if(strlen($_POST['jelszo']) == 0) $loginError .= "Nem írtál be jelszót<br>";
 	if($loginError == '') {
-		$sql = "SELECT id FROM ulesrend WHERE felhasznalonev = '".$_POST['user']."' ";
+		$sql = "SELECT id FROM felhasznalok WHERE felhasznalo = '".$_POST['felhasznalo']."' ";
 
-		if(!$result = $conn->query($sql)) echo $conn->error;
+        if(!$result = $conn->query($sql)) echo $conn->error;
 
 		if ($result->num_rows > 0) {
 			
 			if($row = $result->fetch_assoc()) {
-				$tanulo->set_user($row['id'], $conn);
-				if(md5($_POST['pw']) == $tanulo->get_jelszo()) {
+				$felhasznalok->set_user($row['id'], $conn);
+				if(md5($_POST['jelszo']) == $felhasznalok->get_jelszo()) {
 					$_SESSION["id"] = $row['id'];
-					$_SESSION["nev"] = $tanulo->get_nev();
+					$_SESSION["nev"] = $felhasznalok->get_nev();
                     header('Location: index.php?page=ulesrend');
                     exit();
 				}
@@ -26,7 +26,6 @@ if(isset($_POST['user']) and isset($_POST['pw'])) {
 	}
 }
 
-include 'fooldal.php';
 ?>
 
 <html>
@@ -36,7 +35,7 @@ include 'fooldal.php';
 
     <body>
         <form action="belepes.php" method="POST">
-            Felhasználó név: <input type="text" name="felhasznalo">
+            Felhasználónév: <input type="text" name="felhasznalo">
             Jelszó: <input type="password" name="jelszo">
             <input value="Belépés" type="submit">
         </form>
