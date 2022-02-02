@@ -1,22 +1,22 @@
-<?php     
-session_start();
-require 'model/felhasznalok.php';
-$felhasznalo = new User;
-   if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
+<?php
+
+if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
 	$loginError = '';
+	if(strlen($_POST['felhasznalo']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";
+	if(strlen($_POST['jelszo']) == 0) $loginError .= "Nem írtál be jelszót<br>";
 	if($loginError == '') {
-		$sql = "SELECT `id` FROM `felhasznalok` WHERE `felhasznalonev` = '".$_POST['felhasznalo']."' ";
+		$sql = "SELECT id FROM felhasznalok WHERE felhasznalon = '".$_POST['felhasznalo']."' ";
 
 		if(!$result = $conn->query($sql)) echo $conn->error;
-          
-		if(!empty($result->num_rows) && $result->num_rows > 0) {
+
+		if ($result->num_rows > 0) {
 			
 			if($row = $result->fetch_assoc()) {
-				$felhasznalo->set_user($row['felhasznalo'], $conn);
-				if(md5($_POST['jelszo']) == $felhasznalo->get_jelszo()) {
-					$_SESSION["felhasznalo"] = $row['felhasznalo'];
-					$_SESSION["felhasznalonev"] = $felhasznalo->get_felhasznalonev();
-                    header('Location: index.php?page=index');
+				$tanulo->set_felhasznalo($row['id'], $conn);
+				if(md5($_POST['jelszo']) == $tanulo->get_jelszo()) {
+					$_SESSION["id"] = $row['id'];
+					$_SESSION["nev"] = $tanulo->get_nev();
+                    header('Location: index.php?page=ulesrend');
                     exit();
 				}
 				else $loginError .= 'Érvénytelen jelszó<br>';
@@ -26,7 +26,9 @@ $felhasznalo = new User;
 	}
 }
 
-?>  
+
+?>
+
 
 
 <html>
