@@ -8,14 +8,13 @@ if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
 	if(strlen($_POST['felhasznalo']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";
 	if(strlen($_POST['jelszo']) == 0) $loginError .= "Nem írtál be jelszót<br>";
 	if($loginError == '') {
-		$sql = "SELECT id FROM felhasznalok WHERE felhasznalo = '".$_POST['felhasznalo']."' ";
+		$sql = "SELECT id FROM felhasznalok WHERE felhasznalon = '".$_POST['felhasznalo']."' ";
 
 		if(!$result = $conn->query($sql)) echo $conn->error;
 
 		if ($result->num_rows > 0) {
 			
 			if($row = $result->fetch_assoc()) {
-				$tanulo->set_user($row['id'], $conn);
 				if(md5($_POST['jelszo']) == $tanulo->get_jelszo()) {
 					$_SESSION["id"] = $row['id'];
 					$_SESSION["nev"] = $tanulo->get_nev();
