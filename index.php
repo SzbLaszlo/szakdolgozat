@@ -16,7 +16,7 @@ if(!empty($_REQUEST['action'])) {
 
 // ki vagy be vagyok lépve?
 if(!empty($_SESSION["id"])) {
-        $szoveg = $_SESSION["nev"].": Kilépés";
+        $szoveg = $_SESSION["felhasznalo"].": Kilépés";
         $action = "kilepes";
 }
 else {
@@ -32,8 +32,8 @@ if(isset($_REQUEST['page'])) {
 }
 
 $menupontok = array(    'index' => "Főoldal",
-'regisztral'=>"Regisztráció", 
-                        'felhasznalo' => $szoveg
+                        'regisztral'=>"Regisztráció", 
+                        'belepes' => $szoveg
                 );
 
 $title = $menupontok[$page];

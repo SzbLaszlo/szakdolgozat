@@ -1,7 +1,5 @@
 <?php 
-include './model/felhasznalok.php';
-$tanulo =new User;
-include './includes/db.inc.php';
+
 
 if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
    $loginError = '';
