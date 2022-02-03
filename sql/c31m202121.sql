@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost
--- Létrehozás ideje: 2022. Jan 27. 13:09
+-- Létrehozás ideje: 2022. Feb 02. 15:10
 -- Kiszolgáló verziója: 10.3.29-MariaDB-0+deb10u1
 -- PHP verzió: 7.4.23
 

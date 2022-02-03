@@ -1,14 +1,17 @@
 <?php
+
 $servername = "localhost";
-$username = "c31m202121";
-$password = "y9cSUwWf2!Pq";
+$username = "root";
+$password = "";
 $dbname = "c31m202121";
 
-// csatlakozás
+// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// csatlakozás ellenőrzése
+// Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+
+
 ?>
