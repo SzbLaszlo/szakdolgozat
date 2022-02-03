@@ -19,9 +19,15 @@ if (isset($_POST['felhasznalo']) && isset($_POST['jelszo'])) {
         }
     }else{
         echo "Már létezik ilyen felhasználó!";
+    $sql = "INSERT INTO `felhasznalok` (`felhasznalo`,`jelszo`) VALUES ('$felhasznalo', '$jelszo')";
+ 
+    $result = mysqli_query($conn,$query);
+    if ($results) {
+        echo 'Sikeres regisztráció!';
+    } else {
+        echo "Sikertelen regisztráció!";
     }
 }
 include "view/regisztral.php";
-
+}
 ?>
-
