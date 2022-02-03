@@ -1,4 +1,7 @@
 <?php
+ include './model/felhasznalok.php';
+ $tanulo =new User;
+include './includes/db.inc.php';
 
 if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
 	$loginError = '';
@@ -7,16 +10,16 @@ if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
 	if($loginError == '') {
 		$sql = "SELECT id FROM felhasznalok WHERE felhasznalo = '".$_POST['felhasznalo']."' ";
 
-        //if(!$result = $conn->query($sql)) echo $conn->error;
+		if(!$result = $conn->query($sql)) echo $conn->error;
 
 		if ($result->num_rows > 0) {
 			
 			if($row = $result->fetch_assoc()) {
-				$felhasznalok->set_user($row['id'], $conn);
-				if(md5($_POST['jelszo']) == $felhasznalok->get_jelszo()) {
+				$tanulo->set_user($row['id'], $conn);
+				if(md5($_POST['jelszo']) == $tanulo->get_jelszo()) {
 					$_SESSION["id"] = $row['id'];
-					$_SESSION["nev"] = $felhasznalok->get_nev();
-                    header('Location: belepes.php?page=fooldal');
+					$_SESSION["nev"] = $tanulo->get_nev();
+                    header('Location: index.php?page=ulesrend');
                     exit();
 				}
 				else $loginError .= 'Érvénytelen jelszó<br>';
@@ -26,7 +29,10 @@ if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
 	}
 }
 
+
 ?>
+
+
 
 <html>
     <head>
