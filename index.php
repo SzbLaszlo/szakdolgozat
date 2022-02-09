@@ -33,8 +33,12 @@ if(isset($_REQUEST['page'])) {
 
 $menupontok = array(    'index' => "Főoldal",
                         'regisztral'=>"Regisztráció", 
+<<<<<<< HEAD
                         'belepes' => $szoveg,
                         'kilepes' => "Kilépés"
+=======
+                        'belepes' => $szoveg
+>>>>>>> b17ceacc98528517ebd0adab43f1b65e39591f86
                 );
 
 $title = $menupontok[$page];
