@@ -28,8 +28,13 @@ class User {
         return $this->jelszo;
     }
 
+
+    public function get_felhasznalo() {
+        return $this->felhasznalo;
+    }
     public function get_felhasznalon() {
         return $this->felhasznalon;
+
     }
 
 
