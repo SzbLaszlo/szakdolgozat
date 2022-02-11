@@ -8,6 +8,7 @@
             Felhasználónév: <input type="text" name="felhasznalo" required>
             Jelszó: <input type="password" name="jelszo" required>
             Jelszó újra: <input type="password" name="jelszoujra" required>
+            Email: <input type="email" name="email" required>
             <input value="Regisztráció" type="submit" name="submit">
         </form>
     </body>
