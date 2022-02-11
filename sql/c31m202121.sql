@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Gép: localhost
--- Létrehozás ideje: 2022. Feb 02. 15:10
--- Kiszolgáló verziója: 10.3.29-MariaDB-0+deb10u1
--- PHP verzió: 7.4.23
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2022. Feb 09. 21:47
+-- Kiszolgáló verziója: 10.4.14-MariaDB
+-- PHP verzió: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,7 +50,8 @@ CREATE TABLE `felhasznalok` (
 --
 
 INSERT INTO `felhasznalok` (`id`, `felhasznalo`, `jelszo`) VALUES
-(1, 'proba', 'proba');
+(1, 'proba', 'proba'),
+(2, 'asd', '7815696ecbf1c96e6894b779456d330e');
 
 -- --------------------------------------------------------
 
@@ -63,6 +64,13 @@ CREATE TABLE `marka` (
   `marka` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- A tábla adatainak kiíratása `marka`
+--
+
+INSERT INTO `marka` (`id`, `marka`) VALUES
+(1, 'iphone');
+
 -- --------------------------------------------------------
 
 --
@@ -74,9 +82,24 @@ CREATE TABLE `tipusok` (
   `nev` text NOT NULL,
   `markaId` int(11) NOT NULL,
   `processzor` text NOT NULL,
+  `magok` int(10) NOT NULL,
+  `sebesseg` double DEFAULT NULL,
   `ram` int(11) NOT NULL,
   `rom` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `tipusok`
+--
+
+INSERT INTO `tipusok` (`id`, `nev`, `markaId`, `processzor`, `magok`, `sebesseg`, `ram`, `rom`) VALUES
+(1, 'iphone 13', 1, 'A15 Bionic', 6, 3.23, 4, 128),
+(2, 'iphone 12', 1, 'A14 Bionic', 6, 3.01, 4, 128),
+(4, 'iphone 11', 1, 'A13 Bionic', 6, 2.66, 4, 128),
+(5, 'iphone xr', 1, 'A12 Bionic', 6, 2.49, 6, 64),
+(6, 'iphone 8', 1, 'A11 Bionic', 6, 2.39, 2, 64),
+(7, 'iphone 7', 1, 'A10 Fusion', 4, 2.23, 2, 32),
+(8, 'iphone 6', 1, 'A8', 2, 1.4, 1, 32);
 
 -- --------------------------------------------------------
 
@@ -142,19 +165,19 @@ ALTER TABLE `ertekeles`
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `marka`
 --
 ALTER TABLE `marka`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `tipusok`
 --
 ALTER TABLE `tipusok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT a táblához `velemeny`
@@ -177,14 +200,7 @@ ALTER TABLE `ertekeles`
 -- Megkötések a táblához `marka`
 --
 ALTER TABLE `marka`
-  ADD CONSTRAINT `marka_ibfk_1` FOREIGN KEY (`id`) REFERENCES `admin` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Megkötések a táblához `tipusok`
---
-ALTER TABLE `tipusok`
-  ADD CONSTRAINT `ibfk_conn_marka` FOREIGN KEY (`markaId`) REFERENCES `marka` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tipusok_ibfk_1` FOREIGN KEY (`id`) REFERENCES `admin` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `marka_ibfk_1` FOREIGN KEY (`id`) REFERENCES `tipusok` (`markaId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `velemeny`

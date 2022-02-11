@@ -1,3 +1,9 @@
+<?php
+	if(!empty($_SESSION["id"])) {
+	    echo "Üdv ".$_SESSION['felhasznalo']."!";
+    }
+?>
+
 <html>
     <body>
         <form action="index.php?page=belepes" method="POST">

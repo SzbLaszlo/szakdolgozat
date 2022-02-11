@@ -16,12 +16,14 @@ if(!empty($_REQUEST['action'])) {
 
 // ki vagy be vagyok lépve?
 if(!empty($_SESSION["id"])) {
-        $szoveg = $_SESSION["felhasznalo"].": Kilépés";
+        $szoveg = $_SESSION["felhasznalo"];
         $action = "kilepes";
+        $kilep = "Kilépés";
 }
 else {
         $szoveg = "Belépés";
-        $action = "belepes";        
+        $action = "belepes";
+        $kilep = "";     
 } 
 
 // router
@@ -33,10 +35,12 @@ if(isset($_REQUEST['page'])) {
 
 $menupontok = array(    'index' => "Főoldal",
                         'regisztral'=>"Regisztráció", 
-                        'belepes' => $szoveg
+                        'belepes' => $szoveg,
+                        'kilepes' => $kilep
                 );
 
 $title = $menupontok[$page];
+
 
 
 ?>
