@@ -15,9 +15,9 @@ if (isset($_POST['felhasznalo']) && isset($_POST['jelszo'])) {
     
         if ( $result = $conn->query($sql)) {
             echo 'Sikeres regisztráció!';
-            $msg = "Szia Uram!";
-            $msg = wordwrap($msg,70);
-            mail($email,"Szabó László",$msg);
+                $msg = "Kész vagyok!";
+                $msg = wordwrap($msg,70);
+                mail($email,"Szabó László",$msg);        
         } else {
             echo "Sikertelen regisztráció!";
         }
@@ -28,4 +28,3 @@ if (isset($_POST['felhasznalo']) && isset($_POST['jelszo'])) {
 include "view/regisztral.php";
 
 ?>
-
