@@ -41,8 +41,6 @@ $menupontok = array(    'index' => "Főoldal",
 
 $title = $menupontok[$page];
 
-
-
 ?>
 <html>
         <head>
