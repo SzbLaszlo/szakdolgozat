@@ -1,6 +1,4 @@
 <?php 
-
-
 if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
    $loginError = '';
    if(strlen($_POST['felhasznalo']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";

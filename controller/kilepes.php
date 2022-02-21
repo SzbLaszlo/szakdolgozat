@@ -1,1 +1,6 @@
-<h1>Most ki fogsz lépni</h1>
+<?php
+session_start();
+unset($_SESSION["id"]);
+unset($_SESSION["felhasznalo"]);
+header("Location: index.php?page=belepes");
+?>
