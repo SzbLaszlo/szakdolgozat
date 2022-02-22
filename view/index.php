@@ -14,7 +14,7 @@ $result = $conn->query("SELECT kep, nev, processzor, magok, sebesseg, ram, rom F
 //}
 
     while($row = $result->fetch_assoc()){
-         echo '<img src="data:image;base64,'.base64_encode($row['kep']).'" alt="Image">';
+        echo '<img src="data:image;base64,'.base64_encode($row['kep']).'" alt="Image">';
         ?>
         <p>Név: <?php echo($row['nev']);?></p>
         <p>Processzor: <?php echo($row['processzor']);?></p>
