@@ -23,7 +23,7 @@ if(!empty($_SESSION["id"])) {
 else {
         $szoveg = "Belépés";
         $action = "belepes";
-        $kilep = "";     
+        $kilep = "";
 } 
 
 // router

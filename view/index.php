@@ -6,12 +6,8 @@
 
 
 <?php 
-$result = $conn->query("SELECT kep, nev, processzor, magok, sebesseg, ram, rom FROM tipusok"); 
+$result = $conn->query("SELECT kep, nev, processzor, magok, sebesseg, ram, rom FROM tipusok");
 
-//kép megjelenítése
-//foreach(glob("*.jpg") as $filename){
-//    echo "<img src='$filename' alt='$filename'/>";
-//}
     while($row = $result->fetch_assoc()){
         echo '<img src="data:image;base64,'.base64_encode($row['kep']).'" alt="Image">';
         ?>
