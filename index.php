@@ -41,16 +41,16 @@ $menupontok = array(    'index' => "Főoldal",
 
 $title = $menupontok[$page];
 
-
-
 ?>
-<body>
-<?php
-include 'includes/htmlheader.inc.php';
-include 'includes/menu.inc.php';
-include 'controller/'.$page.'.php';
-
-?>
-
-</body>
+<html>
+        <head>
+        <link rel="stylesheet" href="style.css">
+        </head>
+                <body>
+                        <?php
+                        include 'includes/htmlheader.inc.php';
+                        include 'includes/menu.inc.php';
+                        include 'controller/'.$page.'.php';
+                        ?>
+                </body>
 </html>
