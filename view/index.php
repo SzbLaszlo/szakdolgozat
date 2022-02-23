@@ -1,6 +1,15 @@
 <html>
         <body>
         <h1>Telefonok</h1>
+
+        <!--
+        <ul>
+        <li><a href="controller/iphone.php">Iphone</a></li>
+        <li><a href="xiaomi.php">Xiaomi</a></li>
+        <li><a href="huawei.php">Huawei</a></li>
+        <li><a href="honor.php">Honor</a></li>
+        </ul>
+        -->
         </body>
 </html>
 

@@ -33,11 +33,19 @@ if(isset($_REQUEST['page'])) {
         }
 }
 
+// ha be vagyok lépve
+if(!empty($_SESSION["id"])){
 $menupontok = array(    'index' => "Főoldal",
-                        'regisztral'=>"Regisztráció", 
-                        'belepes' => $szoveg,
                         'kilepes' => $kilep
                 );
+        }else{
+//ha ki vagyok lépve
+$menupontok = array(    'index' => "Főoldal",
+                        'regisztral'=>"Regisztráció", 
+                        'belepes' => $szoveg
+                );
+        }
+
 
 $title = $menupontok[$page];
 
