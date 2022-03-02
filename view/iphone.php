@@ -6,6 +6,7 @@
         <li><a href="index.php?page=xiaomi">Xiaomi</a></li>
         <li><a href="index.php?page=huawei">Huawei</a></li>
         <li><a href="index.php?page=honor">Honor</a></li>
+        <li><a href="index.php?page=samsung">Samsung</a></li>
         </ul>
         
         </body>
