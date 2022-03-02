@@ -1,6 +1,7 @@
 <html>
     <body>
         <form action="index.php?page=belepes" method="POST">
+            <?php echo $loginError;?>
             <div class="row">
                 <div class="col">
                 Felhasználónév: <input type="text" name="felhasznalo" class="form-control">

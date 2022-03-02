@@ -15,6 +15,7 @@
 
             if($key == 'felhasznalo') $key.='&action='.$action;
             ?>
+            
             <li class="nav-item<?php echo $active; ?>">
                 <a class="nav-link" href="index.php?page=<?php echo $key; ?>"><?php echo $value; ?></a>
             </li>

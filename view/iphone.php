@@ -1,4 +1,16 @@
-<?php 
+<html>
+        <body>
+        <h1>Telefonok</h1>
+        <ul id="link">
+        <li><a href="index.php?page=iphone">Iphone</a></li>
+        <li><a href="index.php?page=xiaomi">Xiaomi</a></li>
+        <li><a href="index.php?page=huawei">Huawei</a></li>
+        <li><a href="index.php?page=honor">Honor</a></li>
+        </ul>
+        
+        </body>
+</html>
+<?php
 $result = $conn->query("SELECT kep, nev, processzor, magok, sebesseg, ram, rom FROM tipusok WHERE markaId = 1");
 
     while($row = $result->fetch_assoc()){

@@ -2,14 +2,12 @@
         <body>
         <h1>Telefonok</h1>
 
-        <!--
-        <ul>
-        <li><a href="controller/iphone.php">Iphone</a></li>
-        <li><a href="xiaomi.php">Xiaomi</a></li>
-        <li><a href="huawei.php">Huawei</a></li>
-        <li><a href="honor.php">Honor</a></li>
+        <ul id="link">
+        <li><a href="index.php?page=iphone">Iphone</a></li>
+        <li><a href="index.php?page=xiaomi">Xiaomi</a></li>
+        <li><a href="index.php?page=huawei">Huawei</a></li>
+        <li><a href="index.php?page=honor">Honor</a></li>
         </ul>
-        -->
         </body>
 </html>
 

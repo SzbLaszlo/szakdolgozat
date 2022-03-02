@@ -34,20 +34,24 @@ if(isset($_REQUEST['page'])) {
 }
 
 // ha be vagyok lépve
-if(!empty($_SESSION["id"])){
-$menupontok = array(    'index' => "Főoldal",
-                        'kilepes' => $kilep
+
+        if(!empty($_SESSION["id"])){
+                $menupontok = array(    'index' => "Főoldal",
+                                'kilepes' => $kilep
                 );
         }else{
 //ha ki vagyok lépve
-$menupontok = array(    'index' => "Főoldal",
+                $menupontok = array(    'index' => "Főoldal",
                         'regisztral'=>"Regisztráció", 
                         'belepes' => $szoveg
                 );
         }
 
-
-$title = $menupontok[$page];
+if($page!="iphone" and $page!="huawei" and $page!="honor" and $page!="xiaomi"){
+        $title = $menupontok[$page];
+}else{
+        $title = $page;
+}
 
 ?>
 <html>
