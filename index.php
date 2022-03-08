@@ -47,7 +47,7 @@ if(isset($_REQUEST['page'])) {
                 );
         }
 
-if($page!="iphone" and $page!="huawei" and $page!="honor" and $page!="xiaomi" and $page!="samsung"){
+if($page!="iphone" and $page!="huawei" and $page!="honor" and $page!="xiaomi" and $page!="samsung" and $page!="telefon"){
         $title = $menupontok[$page];
 }else{
         $title = $page;
