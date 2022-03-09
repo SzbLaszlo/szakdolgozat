@@ -1,9 +1,9 @@
 p, h1{
     text-align: center;
 }
-img{
-    width: 200px;
-    height: 200px;
+img, #telolink{
+    max-width: 200px;
+    max-height: 200px;
     display: block;
     margin-left: auto;
     margin-right: auto;
