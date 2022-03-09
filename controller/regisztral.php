@@ -15,9 +15,12 @@ if (isset($_POST['felhasznalo']) && isset($_POST['jelszo'])) {
     
         if ( $result = $conn->query($sql)) {
             echo 'Sikeres regisztráció!';
-                $msg = "Kész vagyok!";
+                $msg = "
+                <div>Üdvözlünk a telefonos oldalunkon ".$felhasznalo."!</div>
+                <br><br>
+                <div>Ez egy automatikus üzenet, kérlek ne válaszolj erre a levélre!</div>";
                 $msg = wordwrap($msg,70);
-                mail($email,"Szabó László",$msg);        
+                mail($email,"Sikeres regisztráció!",$msg);        
         } else {
             echo "Sikertelen regisztráció!";
         }
