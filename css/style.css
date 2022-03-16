@@ -28,3 +28,14 @@ li a:hover {
     background-color: #555;
     color: white;
 }
+#commenthely{
+    resize: none;
+    width: 550px;
+    height: 150px;
+    border: 2px solid black;
+}
+.comment-box{
+    border: 2px solid black;
+    width: 50%;
+    margin: auto;
+}

@@ -1,7 +1,5 @@
 <?php
 
-include 'includes/db.inc.php';
-
 if(isset($_GET['id'])){
     $id = mysqli_real_escape_string($conn, $_GET['id']);
 
@@ -19,18 +17,19 @@ $row = $result->fetch_assoc();
 }
 ?>
 
+
+
 <?php
 
 echo "<form method='POST' action='".setComments($conn)."'>
-<input type='hidden' name='felhasznalo' value='Anonymous'>
-
-<textarea name='velemeny'></textarea><br>
-<button type='submit' name='commentSubmit'>Comment</button>
+<input type='hidden' name='felhasznalo' value='asd'>
+<input type='hidden' name='datum' value='".date('Y-m-d H:i:s')."'>
+<textarea name='velemeny' id='commenthely' required></textarea><br>
+<button type='submit' name='commentSubmit' class='btn btn-success'>Comment</button>
 </form>";
 
 getComments($conn);
-//<input type='hidden' name='felhasznalo' value='Anonymous'>
-//<input type='hidden' name='datum' value='".date('Y-m-d H:i:s')."'>
+
 ?>
 
 <?php
@@ -38,42 +37,47 @@ getComments($conn);
 function setComments($conn) {
     if(isset($_POST['commentSubmit'])) {
         //$id = $_POST['id'];
-        //$datum = $_POST['datum'];
         $felhasznalo = $_POST['felhasznalo'];
         $velemeny = $_POST['velemeny'];
-
-        $sql = "INSERT INTO velemeny (felhasznalo, velemeny) VALUES ('$felhasznalo', '$velemeny')";
-        $result = $conn->query($sql);
+        $datum = $_POST['datum'];
+        $sql = "INSERT INTO velemeny (felhasznalo, velemeny, velemenyid, datum) VALUES ('$felhasznalo', '$velemeny', ".$_REQUEST['id'].", '$datum')";
+        if (!$conn->query($sql)){
+            echo $conn->error;
+        }
     }
 }
 
 function getComments($conn) {
-    $sql = "SELECT * FROM velemeny";
+    if(isset($_GET['id'])){
+    $id = mysqli_real_escape_string($conn, $_GET['id']);
+
+
+    $sql = "SELECT * FROM velemeny WHERE velemenyid='$id'";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
-        echo "<div class='comment-box'><p>";
-            echo $row['felhasznalo']."<br>";
-            //echo $row['datum']."<br>";
-            echo nl12br($row['velemeny']);
-        echo "</p></div>";
+        echo "<div class='comment-box'>";
+            echo $row['datum']."<br>".$row['felhasznalo']." nevű felhasználó írta:<br><br><p>";
+            echo ($row['velemeny']);
+            //nl12br
+        echo "</p>";
 
-/*
-        echo "<form class='delete-form' method='POST' action='".deleteComments()."'>
+        echo "<form class='delete-form' method='POST' action='".deleteComments($conn)."'>
         <input type='hidden' name='cid' value='".$row['id']."'>
-        <button type='submit' name='commentDelete'>Delete</button>
-        </form>"
-*/        
+        <button type='submit' name='commentDelete' class='btn btn-danger'>Törlés</button>
+        </form></div><br>";
     }
 }
+
+
+}
+
 
 function deleteComments($conn) {
     if (isset($_POST['commentDelete'])){
-        $cid = $_POST['id'];
-
+        $cid = $_POST['cid'];
         $sql = "DELETE FROM velemeny WHERE id='$cid'";
         $result = $conn->query($sql);
-        header("Location: index.php");
+        //header("Location: index.php");
     }
 }
-
 ?>
