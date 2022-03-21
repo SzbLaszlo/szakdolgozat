@@ -2,8 +2,7 @@
 include "view/komment.php";
 function setComments($conn) {
     if(isset($_POST['commentSubmit'])) {
-        //$id = $_POST['id'];
-        $felhasznalo = $_POST['felhasznalo'];
+        $felhasznalo = $_SESSION['felhasznalo'];
         $velemeny = $_POST['velemeny'];
         $datum = $_POST['datum'];
         $sql = "INSERT INTO velemeny (felhasznalo, velemeny, velemenyid, datum) VALUES ('$felhasznalo', '$velemeny', ".$_REQUEST['id'].", '$datum')";
@@ -24,13 +23,14 @@ function getComments($conn) {
         echo "<div class='comment-box'>";
             echo $row['datum']."<br>".$row['felhasznalo']." nevű felhasználó írta:<br><br><p>";
             echo ($row['velemeny']);
-            //nl12br
         echo "</p>";
-
-        echo "<form class='delete-form' method='POST' action='".deleteComments($conn)."'>
-        <input type='hidden' name='cid' value='".$row['id']."'>
-        <button type='submit' name='commentDelete' class='btn btn-danger'>Törlés</button>
-        </form></div><br>";
+        if(isset($_SESSION['felhasznalo']) and $_SESSION['felhasznalo'] == $row['felhasznalo']){
+            echo "<form class='delete-form' method='POST' action='".deleteComments($conn)."'>
+            <input type='hidden' name='cid' value='".$row['id']."'>
+            <button type='submit' name='commentDelete' class='btn btn-danger'>Törlés</button>
+            </form>";
+        }
+        echo '</div><br>';
     }
 }
 
@@ -41,7 +41,6 @@ function deleteComments($conn) {
         $cid = $_POST['cid'];
         $sql = "DELETE FROM velemeny WHERE id='$cid'";
         $result = $conn->query($sql);
-        //header("Location: index.php");
+        }
     }
-}
 ?>

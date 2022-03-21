@@ -1,4 +1,5 @@
 <?php
+if(isset($_SESSION['id'])){
 echo"
 <div id='ertek'>
     <form method='POST' action='".setErtekel($conn)."'>
@@ -18,5 +19,5 @@ echo"
 
     </form>
 </div>";
-
+}
 ?>
