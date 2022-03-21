@@ -1,12 +1,9 @@
 <?php
-
 include "view/ertekeles.php";
-
 function setErtekel($conn) {
-    if(isset($_POST['commentSubmit'])) {
-        //$id = $_POST['id'];
-        $felhasznalo = $_POST['felhasznalo'];
-        $ertekeles = $_POST['ertekeles'];
+    if(isset($_POST['ertekelesSubmit'])) {
+        $felhasznalo = $_SESSION['felhasznalo'];
+        $ertekeles = $_POST['ertekel'];
         $sql = "INSERT INTO ertekeles (felhasznalo, ertekeles) VALUES ('$felhasznalo', '$ertekeles')";
         if (!$conn->query($sql)){
             echo $conn->error;
