@@ -37,6 +37,7 @@ if(isset($_REQUEST['page'])) {
 
         if(!empty($_SESSION["id"])){
                 $menupontok = array(    'index' => "Főoldal",
+                                'profilom' => "Profilom",
                                 'kilepes' => $kilep
                 );
         }else{

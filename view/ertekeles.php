@@ -7,7 +7,7 @@ echo"
     <label for='elso'>1</label>
     <input type='radio' id='masodik' name='ertekel' value='2'>
     <label for='masodik'>2</label>
-    <input type='radio' id='harmadik' name='ertekel' value='3'>
+    <input type='radio' id='harmadik' name='ertekel' value='3' checked>
     <label for='harmadik'>3</label>
     <input type='radio' id='negyedik' name='ertekel' value='4'>
     <label for='negyedik'>4</label>
@@ -17,4 +17,7 @@ echo"
     </form>
 </div>";
 }
+echo "A felhasználók által értékel eszköz ";
+getErtekel($conn);
+echo " pontot ért el.";
 ?>
