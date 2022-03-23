@@ -6,4 +6,13 @@ if(!empty($_SESSION['id'])){
         echo "<div class='profil'>Email: ".$row['email']."</div>";
     }
 }
+
+echo "<form action='index.php?page=profiltorol' method='POST'>
+    <label for='felhasznalo'>Szeretnéd törölni a felhasználódat?</label>
+    <input type='submit' name='igen' value='Igen'>
+    <input type='submit' name='nem' value='Nem'>
+    </form>";
+
+
+
 ?>
