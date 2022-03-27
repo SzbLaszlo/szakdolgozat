@@ -3,16 +3,13 @@ if(isset($_SESSION['id'])){
 echo"
 <div id='ertek'>
     <form method='POST' action='".setErtekel($conn)."'>
-    <input type='radio' id='elso' name='ertekel' value='1'>
-    <label for='elso'>1</label>
-    <input type='radio' id='masodik' name='ertekel' value='2'>
-    <label for='masodik'>2</label>
-    <input type='radio' id='harmadik' name='ertekel' value='3' checked>
-    <label for='harmadik'>3</label>
-    <input type='radio' id='negyedik' name='ertekel' value='4'>
-    <label for='negyedik'>4</label>
-    <input type='radio' id='otodik' name='ertekel' value='5'>
-    <label for='otodik'>5</label>
+    <fieldset class='rating'>
+        <input type='radio' id='star5' name='ertekel' value='5' /><label for='star5'></label>
+        <input type='radio' id='star4' name='ertekel' value='4' /><label for='star4'></label>
+        <input type='radio' id='star3' name='ertekel' value='3' /><label for='star3'></label>
+        <input type='radio' id='star2' name='ertekel' value='2' /><label for='star2'></label>
+        <input type='radio' id='star1' name='ertekel' value='1' /><label for='star1'></label>
+    </fieldset>
     <button type='submit' name='ertekelesSubmit' class='btn btn-success'>Értékel</button>
     </form>
 </div>";
