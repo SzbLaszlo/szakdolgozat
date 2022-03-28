@@ -15,6 +15,16 @@ if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
                if(md5($_POST['jelszo']) == $tanulo->get_jelszo()) {
                    $_SESSION["id"] = $row['id'];
                    $_SESSION["felhasznalo"] = $tanulo->get_felhasznalo();
+                   $sql = "SELECT id FROM admin WHERE id = ".$row['id'];
+
+                   if(!$result = $conn->query($sql)) echo $conn->error;
+
+                   if ($result->num_rows > 0) {
+                        $_SESSION['admin']==true;
+                    }else{
+                        $_SESSION['admin']==false;
+                    }
+
                    header('Location: index.php');
                    exit();
                }

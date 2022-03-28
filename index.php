@@ -33,13 +33,24 @@ if(isset($_REQUEST['page'])) {
         }
 }
 
+
+
 // ha be vagyok lépve
 
         if(!empty($_SESSION["id"])){
-                $menupontok = array(    'index' => "Főoldal",
-                                'profilom' => "Profilom",
-                                'kilepes' => $kilep
-                );
+                if(isset($_SESSION['admin'])){
+                        $menupontok = array(    'index' => "Főoldal",
+                        'profilom' => "Profilom",
+                        'feltolt' => "Feltölt",
+                        'kilepes' => $kilep
+                         );
+                }else{
+                        $menupontok = array(    'index' => "Főoldal",
+                                        'profilom' => "Profilom",
+                                        'feltolt' => "Feltölt",
+                                        'kilepes' => $kilep
+                        );
+                }
         }else{
 //ha ki vagyok lépve
                 $menupontok = array(    'index' => "Főoldal",
@@ -49,7 +60,7 @@ if(isset($_REQUEST['page'])) {
         }
 
 if($page!="iphone" and $page!="huawei" and $page!="honor" and $page!="xiaomi" and $page!="samsung"
- and $page!="telefon" and $page!="komment" and $page!="ertekeles" and $page!="profiltorol"){
+ and $page!="telefon" and $page!="komment" and $page!="ertekeles" and $page!="profiltorol" and $page!="feltolt" and $page!="feltoltvegrehajt" and $page!="telefontorol"){
         $title = $menupontok[$page];
 }else{
         $title = $page;

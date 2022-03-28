@@ -13,8 +13,24 @@ $row = $result->fetch_assoc();
         <p>Processzor sebessége: <?php echo($row['sebesseg']);?> GHz</p>
         <p>RAM: <?php echo($row['ram']);?> GB</p>
         <p>ROM: <?php echo($row['rom']);?> GB</p><hr>
+        
 <?php
+
+echo "<form action='index.php?page=telefon&id='".$_REQUEST['id']." method='POST'>
+<label for='telefon'>Szeretnéd törölni a telefont?</label>
+<input type='submit' id='telefon' class='btn-danger' name='torol' value='Törlés'>
+</form>";
+
+if (!empty($_GET['id'])){
+    $id=$_GET['id'];
+    $sql = "DELETE FROM tipusok WHERE id = '$id'";
+    $result = $conn->query($sql);
+    header('Location: index.php?page=index');
+    }
+
+
 }
+
 require "controller/ertekeles.php";
 require "controller/komment.php";
 ?>
