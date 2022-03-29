@@ -15,7 +15,9 @@ $row = $result->fetch_assoc();
         <p>ROM: <?php echo($row['rom']);?> GB</p><hr>
         
 <?php
+}
 
+if(isset($_SESSION['id'])){
 echo "<form action='index.php?page=telefon&id='".$_REQUEST['id']." method='POST'>
 <label for='telefon'>Szeretnéd törölni a telefont?</label>
 <input type='submit' id='telefon' class='btn-danger' name='torol' value='Törlés'>
@@ -27,10 +29,7 @@ if (!empty($_GET['id'])){
     $result = $conn->query($sql);
     header('Location: index.php?page=index');
     }
-
-
 }
-
 require "controller/ertekeles.php";
 require "controller/komment.php";
 ?>
