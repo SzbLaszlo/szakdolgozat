@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['submitKeres'])){
+if(isset($_POST['submitKeres']) && ($_POST['kereses'] != "")){
     $keres = mysqli_real_escape_string($conn, $_POST['kereses']);
     $sql = "SELECT * FROM tipusok WHERE nev LIKE '%$keres%'";
     $result = mysqli_query($conn, $sql);
@@ -29,5 +29,7 @@ if(isset($_POST['submitKeres'])){
     }else{
         echo "Nincs ilyen találat.";
     }
+}else{
+    echo "Töltse ki a kereső mezőt!";
 }
 ?>
