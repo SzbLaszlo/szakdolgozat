@@ -16,7 +16,7 @@ $row = $result->fetch_assoc();
         
 <?php
 }
-
+/*
 if(isset($_SESSION['id'])){
 echo "<form action='index.php?page=telefon&id='".$_REQUEST['id']." method='POST'>
 <label for='telefon'>Szeretnéd törölni a telefont?</label>
@@ -30,6 +30,7 @@ if (!empty($_GET['id'])){
     header('Location: index.php?page=index');
     }
 }
+*/
 require "controller/ertekeles.php";
 require "controller/komment.php";
 ?>

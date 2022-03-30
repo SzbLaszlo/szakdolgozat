@@ -1,5 +1,5 @@
 <?php
-
+include "controller/kereses.php";
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,9 +19,13 @@
             <li class="nav-item<?php echo $active; ?>">
                 <a class="nav-link" href="index.php?page=<?php echo $key; ?>"><?php echo $value; ?></a>
             </li>
-            <?php            
+            <?php
+                        
         }
-
+        echo "<div class='keres'><form action='index.php?page=kereses' method='POST'>
+        <input type='text' name='kereses' placeholder='Telefon neve'>
+        <button type='submit' name='submitKeres'>Keresés</button>
+        </form></div>";
       ?>
     </ul>
   </div>

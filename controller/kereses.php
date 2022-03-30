@@ -1,10 +1,4 @@
 <?php
-include "controller/kereses.php";
-
-echo "<div class='keres'><form action='index.php?page=kereses.php' method='POST'>
-<input type='text' name='kereses' placeholder='Telefon neve'>
-<button type='submit' name='submitKeres'>Keresés</button>
-</form></div>";
 
 if(isset($_POST['submitKeres'])){
     $keres = mysqli_real_escape_string($conn, $_POST['kereses']);

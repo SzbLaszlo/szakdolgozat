@@ -10,8 +10,6 @@
         </ul>
         </body>
 </html>
-
-
 <?php 
 $result = $conn->query("SELECT id, kep, nev, processzor, magok, sebesseg, ram, rom FROM tipusok");
 
