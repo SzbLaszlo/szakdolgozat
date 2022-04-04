@@ -19,6 +19,7 @@
             <?php
                         
         }
+        //keresés a telefonok közt
         echo "<div class='keres'><form action='index.php?page=kereses' method='POST'>
         <input type='text' name='kereses' placeholder='Telefon neve'>
         <button type='submit' name='submitKeres'>Keresés</button>

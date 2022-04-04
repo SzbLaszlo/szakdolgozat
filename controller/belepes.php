@@ -1,4 +1,5 @@
-<?php 
+<?php
+//LoginError hiba üzenet
 $loginError = '';
 if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
    if(strlen($_POST['felhasznalo']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";

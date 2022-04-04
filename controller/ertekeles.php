@@ -1,5 +1,6 @@
 <?php
 include "view/ertekeles.php";
+//setErtekel függvény, értékelés beszúrása az adatbázisba
 function setErtekel($conn) {
     if(isset($_POST['ertekelesSubmit'])) {
         $felhasznalo = $_SESSION['felhasznalo'];
@@ -10,7 +11,7 @@ function setErtekel($conn) {
         }
     }
 }
-
+//getErtekel függvény, értékelés megjelenítése
 function getErtekel($conn) {
     if(isset($_GET['id'])){
     $id = mysqli_real_escape_string($conn, $_GET['id']);

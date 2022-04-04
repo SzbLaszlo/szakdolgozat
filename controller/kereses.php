@@ -1,5 +1,5 @@
 <?php
-
+//keresés telefon név alapján
 if(isset($_POST['submitKeres']) && ($_POST['kereses'] != "")){
     $keres = mysqli_real_escape_string($conn, $_POST['kereses']);
     $sql = "SELECT * FROM tipusok WHERE nev LIKE '%$keres%'";

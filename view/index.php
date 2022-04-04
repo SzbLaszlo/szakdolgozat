@@ -10,7 +10,8 @@
         </ul>
         </body>
 </html>
-<?php 
+<?php
+//minden eszköz kiválasztása az adatbázisból
 $result = $conn->query("SELECT id, kep, nev, processzor, magok, sebesseg, ram, rom FROM tipusok");
 
     while($row = $result->fetch_assoc()){

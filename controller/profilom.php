@@ -1,4 +1,5 @@
 <?php
+//felhasználó adatainak kiírása
 if(!empty($_SESSION['id'])){
     $result = $conn->query("SELECT * FROM felhasznalok WHERE id='".$_SESSION['id']."'");
     while ($row = $result->fetch_assoc()){

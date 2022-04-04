@@ -1,5 +1,6 @@
 <?php
 if(isset($_SESSION['id'])){
+//csillagos értékelés, értékelés elküldése az adatbázisnak
 echo"
 <div id='ertek'>
     <form method='POST' action='".setErtekel($conn)."'>

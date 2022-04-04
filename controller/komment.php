@@ -1,5 +1,6 @@
 <?php
 include "view/komment.php";
+//setComments függvény, kommentek beszúrása az adatbázisba
 function setComments($conn) {
     if(isset($_POST['commentSubmit'])) {
         $felhasznalo = $_SESSION['felhasznalo'];
@@ -11,7 +12,7 @@ function setComments($conn) {
         }
     }
 }
-
+//getComments függvény, komment megjelenítése
 function getComments($conn) {
     if(isset($_GET['id'])){
     $id = mysqli_real_escape_string($conn, $_GET['id']);
@@ -35,7 +36,7 @@ function getComments($conn) {
 }
 
 }
-
+//deleteComments függvény, komment törlése
 function deleteComments($conn) {
     if (isset($_POST['commentDelete'])){
         $cid = $_POST['cid'];
