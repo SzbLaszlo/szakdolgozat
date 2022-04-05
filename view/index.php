@@ -18,7 +18,7 @@ $result = $conn->query("SELECT id, kep, nev, processzor, magok, sebesseg, ram, r
 
 while ($row = $result->fetch_assoc()) {
 
-?>
+?>      <div class="telefonbox">
         <div id="telolink">
                 <a href="index.php?page=telefon&id=<?php echo ($row['id']); ?>">
                         <?php
@@ -33,6 +33,7 @@ while ($row = $result->fetch_assoc()) {
         <p>Processzor sebessége: <?php echo ($row['sebesseg']); ?> GHz</p>
         <p>RAM: <?php echo ($row['ram']); ?> GB</p>
         <p>ROM: <?php echo ($row['rom']); ?> GB</p>
+        </div>
         <hr>
 <?php
 }

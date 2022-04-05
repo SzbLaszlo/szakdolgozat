@@ -17,21 +17,26 @@ if (isset($_GET['id'])) {
 
 <?php
 }
-/*
-if(isset($_SESSION['id'])){
-echo "<form action='index.php?page=telefon&id='".$_REQUEST['id']." method='POST'>
-<label for='telefon'>Szeretnéd törölni a telefont?</label>
-<input type='submit' id='telefon' class='btn-danger' name='torol' value='Törlés'>
-</form>";
 
-if (!empty($_GET['id'])){
-    $id=$_GET['id'];
-    $sql = "DELETE FROM tipusok WHERE id = '$id'";
-    $result = $conn->query($sql);
-    header('Location: index.php?page=index');
+//telefon törlésére szolgáló függvény
+function telotorol($conn){
+    if (isset($_POST['torol'])) {
+        if (!empty($_GET['id'])) {
+            $id = $_GET['id'];
+            $sql = "DELETE FROM tipusok WHERE id = '$id'";
+            $result = $conn->query($sql);
+            header('Location: index.php?page=index');
+        }
     }
 }
-*/
+
+if (isset($_SESSION['id'])) {
+    echo "<form method='POST' action=" . telotorol($conn) . ">
+<label for='torol'>Szeretnéd törölni a telefont?</label>
+<input type='submit' id='telefon' class='btn-danger' name='torol' value='Törlés'>
+</form>";
+}
+
 require "controller/ertekeles.php";
 require "controller/komment.php";
 ?>

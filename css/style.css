@@ -7,9 +7,8 @@ img,
 #telolink {
     max-width: 200px;
     max-height: 200px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
+    display: flex;
 }
 
 #link {
@@ -76,6 +75,15 @@ li a:hover {
     margin-top: 50px;
 }
 
+.telefonbox{
+}
+
+.profilkeret{
+    border: 1px solid black;
+    background-color: darkcyan;
+    width: 50%;
+    margin: auto;
+}
 
 
 .rating {
