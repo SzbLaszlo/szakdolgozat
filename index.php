@@ -10,26 +10,25 @@ $tanulo = new User;
 $page = 'index';
 
 // kilépés végrehajtása
-if(!empty($_REQUEST['action'])) {
-	if($_REQUEST['action'] == 'kilepes') session_unset();
+if (!empty($_REQUEST['action'])) {
+        if ($_REQUEST['action'] == 'kilepes') session_unset();
 }
 
 // ki vagy be vagyok lépve?
-if(!empty($_SESSION["id"])) {
+if (!empty($_SESSION["id"])) {
         $szoveg = $_SESSION["felhasznalo"];
         $action = "kilepes";
         $kilep = "Kilépés";
-}
-else {
+} else {
         $szoveg = "Belépés";
         $action = "belepes";
         $kilep = "";
-} 
+}
 
 // router
-if(isset($_REQUEST['page'])) {
-        if(file_exists('controller/'.$_REQUEST['page'].'.php')) {
-                $page = $_REQUEST['page']; 
+if (isset($_REQUEST['page'])) {
+        if (file_exists('controller/' . $_REQUEST['page'] . '.php')) {
+                $page = $_REQUEST['page'];
         }
 }
 
@@ -37,46 +36,54 @@ if(isset($_REQUEST['page'])) {
 
 // ha be vagyok lépve
 
-        if(!empty($_SESSION["id"])){
-                if(isset($_SESSION['admin'])){
-                        $menupontok = array(    'index' => "Főoldal",
+if (!empty($_SESSION["id"])) {
+        if (isset($_SESSION['admin'])) {
+                $menupontok = array(
+                        'index' => "Főoldal",
                         'profilom' => "Profilom",
                         'feltolt' => "Feltölt",
                         'kilepes' => $kilep
-                         );
-                }else{
-                        $menupontok = array(    'index' => "Főoldal",
-                                        'profilom' => "Profilom",
-                                        'feltolt' => "Feltölt",
-                                        'kilepes' => $kilep
-                        );
-                }
-        }else{
-//ha ki vagyok lépve
-                $menupontok = array(    'index' => "Főoldal",
-                        'regisztral'=>"Regisztráció", 
-                        'belepes' => $szoveg
+                );
+        } else {
+                $menupontok = array(
+                        'index' => "Főoldal",
+                        'profilom' => "Profilom",
+                        'feltolt' => "Feltölt",
+                        'kilepes' => $kilep
                 );
         }
+} else {
+        //ha ki vagyok lépve
+        $menupontok = array(
+                'index' => "Főoldal",
+                'regisztral' => "Regisztráció",
+                'belepes' => $szoveg
+        );
+}
 
-if($page!="iphone" and $page!="huawei" and $page!="honor" and $page!="xiaomi" and $page!="samsung"
- and $page!="telefon" and $page!="komment" and $page!="ertekeles" and $page!="profiltorol" and $page!="feltolt"
-  and $page!="feltoltvegrehajt" and $page!="telefontorol" and $page!="kereses"){
+if (
+        $page != "iphone" and $page != "huawei" and $page != "honor" and $page != "xiaomi" and $page != "samsung"
+        and $page != "telefon" and $page != "komment" and $page != "ertekeles" and $page != "profiltorol" and $page != "feltolt"
+        and $page != "feltoltvegrehajt" and $page != "telefontorol" and $page != "kereses"
+) {
         $title = $menupontok[$page];
-}else{
+} else {
         $title = $page;
 }
 
 ?>
 <html>
-        <head>
+
+<head>
         <link rel="stylesheet" href="style.css">
-        </head>
-                <body>
-                        <?php
-                        include 'includes/htmlheader.inc.php';
-                        include 'includes/menu.inc.php';
-                        include 'controller/'.$page.'.php';
-                        ?>
-                </body>
+</head>
+
+<body>
+        <?php
+        include 'includes/htmlheader.inc.php';
+        include 'includes/menu.inc.php';
+        include 'controller/' . $page . '.php';
+        ?>
+</body>
+
 </html>

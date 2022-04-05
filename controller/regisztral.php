@@ -29,5 +29,4 @@ if (isset($_POST['felhasznalo']) && isset($_POST['jelszo'])) {
     }
 }
 include "view/regisztral.php";
-
 ?>
