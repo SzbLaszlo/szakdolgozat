@@ -85,6 +85,12 @@ li a:hover {
     margin: auto;
 }
 
+.feltolt{
+    border: 2px solid black;
+    text-align: center;
+    margin: 50px 300px;
+}
+
 
 .rating {
     float: left;
