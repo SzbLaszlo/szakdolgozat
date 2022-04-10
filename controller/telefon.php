@@ -25,12 +25,18 @@ function telotorol($conn){
             $id = $_GET['id'];
             $sql = "DELETE FROM tipusok WHERE id = '$id'";
             $result = $conn->query($sql);
-            header('Location: index.php?page=index');
+            if($conn->query($sql) === TRUE) {
+                header('Location: index.php?page=index');
+            } else {
+               
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+           
         }
     }
 }
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) && isset($_SESSION['admin']) && $_SESSION['admin']==true) {
     echo "<form method='POST' action=" . telotorol($conn) . ">
 <label for='torol'>Szeretnéd törölni a telefont?</label>
 <input type='submit' id='telefon' class='btn-danger' name='torol' value='Törlés'>

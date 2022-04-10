@@ -2,7 +2,9 @@
 
     $result = $conn->query("SELECT marka FROM marka");
 
-    echo "<div class='feltolt'><form action='".telefonfelvisz($conn)."' method='POST'>
+    echo "
+    <div class='feltolt'>
+    <form action='".telefonfelvisz($conn)."' method='POST' enctype='multipart/form-data'>
     <input type='file' name='kep' required><br>
     <label>Telefon neve: </label>
     <input type='text' name='telefonnev' required><br>
@@ -22,20 +24,45 @@
     </form></div>";
 
     //telefon felvitele az adatbázisba
+    
+
+    
+    
+    
+    
     function telefonfelvisz($conn){
+
+        $errors=array();
+
         if(isset($_POST['hozzaad'])){
-        $kep = $_POST['kep'];
-        $nev = $_POST['telefonnev'];
-        $marka = $_POST['marka'];
-        $proc = $_POST['processzornev'];
-        $mag = $_POST['magok'];
-        $seb = $_POST['sebesseg'];
-        $ram = $_POST['ram'];
-        $rom = $_POST['rom'];
-        $query = "INSERT INTO tipusok (kep, nev, markaId, processzor, magok, sebesseg, ram, rom)
-        VALUES ('$kep', '$nev', '$marka', '$proc', '$mag', '$seb', '$ram', '$rom')";
-        $result = mysqli_query($conn, $query);
-        header('Location: index.php?page=index');
+            $kep = $_FILES['kep']['tmp_name'];
+            $kep = addslashes(file_get_contents($kep));
+            $nev = $_POST['telefonnev'];
+            $marka = $_POST['marka'];
+            $proc = $_POST['processzornev'];
+            $mag = $_POST['magok'];
+            $seb = $_POST['sebesseg'];
+            $ram = $_POST['ram'];
+            $rom = $_POST['rom'];
+            $name=$_FILES["profilepic"]['name'];
+
+            if (isset($name) ) {
+                
+                $target_file = "pictures/".date("Y-m-d")."-".date("h-i-sa").basename($_FILES["profilepic"]["name"]);
+                
+                
+                if(empty($errors)){
+                   
+                    if(empty($errors)){
+                        @move_uploaded_file($name,$target_file);
+                        $sql="INSERT INTO tipusok (kep, nev, markaId, processzor, magok, sebesseg, ram, rom)
+                        VALUES ('$kep', '$nev', '$marka', '$proc', '$mag', '$seb', '$ram', '$rom')";
+                        if ($conn->query($sql) === TRUE) {
+                        } else {
+                            echo "Error: " . $sql . "<br>" . $conn->error;
+                        }
+                    } 
+                }
+            }$errors[]="Nincs fájl kiválasztva";
         }
     }
-?>

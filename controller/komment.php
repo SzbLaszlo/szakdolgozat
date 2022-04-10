@@ -1,5 +1,5 @@
 <?php
-include "view/komment.php";
+
 //setComments függvény, kommentek beszúrása az adatbázisba
 function setComments($conn) {
     if(isset($_POST['commentSubmit'])) {
@@ -44,4 +44,6 @@ function deleteComments($conn) {
         $result = $conn->query($sql);
         }
     }
+    
+include "view/komment.php";
 ?>

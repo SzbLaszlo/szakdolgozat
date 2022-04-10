@@ -37,7 +37,7 @@ if (isset($_REQUEST['page'])) {
 // ha be vagyok lépve
 
 if (!empty($_SESSION["id"])) {
-        if (isset($_SESSION['admin'])) {
+        if (isset($_SESSION['admin']) && $_SESSION['admin']==true) {
                 $menupontok = array(
                         'index' => "Főoldal",
                         'profilom' => "Profilom",
@@ -48,7 +48,7 @@ if (!empty($_SESSION["id"])) {
                 $menupontok = array(
                         'index' => "Főoldal",
                         'profilom' => "Profilom",
-                        'feltolt' => "Feltölt",
+                        //'feltolt' => "Feltölt",
                         'kilepes' => $kilep
                 );
         }
@@ -72,12 +72,9 @@ if (
 }
 
 ?>
+
+
 <html>
-
-<head>
-        <link rel="stylesheet" href="style.css">
-</head>
-
 <body>
         <?php
         include 'includes/htmlheader.inc.php';

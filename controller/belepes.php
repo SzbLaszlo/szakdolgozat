@@ -19,11 +19,10 @@ if(isset($_POST['felhasznalo']) and isset($_POST['jelszo'])) {
                    $sql = "SELECT id FROM admin WHERE id = ".$row['id'];
 
                    if(!$result = $conn->query($sql)) echo $conn->error;
-
                    if ($result->num_rows > 0) {
-                        $_SESSION['admin']==true;
+                        $_SESSION['admin']=true;
                     }else{
-                        $_SESSION['admin']==false;
+                        $_SESSION['admin']=false;
                     }
 
                    header('Location: index.php');
