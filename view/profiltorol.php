@@ -1,5 +1,5 @@
 <?php
-//profil törlés végrehajtásának a gombjai
+//profil törlés végrehajtásának a gombjai, itt már a tényleges törlés történik
 echo "<br><form action='index.php?page=profiltorol' method='POST' class='profil'>
 <label for='felhasznalo'>Szeretnéd törölni a felhasználódat?</label>
 <input type='submit' class='btn-success' name='igen' value='Igen'>

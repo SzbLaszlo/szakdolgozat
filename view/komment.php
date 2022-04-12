@@ -11,6 +11,6 @@
         echo"<div id='belepni'>A kommenteléshez és az értékeléshez be kell jelentkezni!
         </div><br><div id='itt'>Beléphetsz <a href='index.php?page=belepes'>itt!</a></div><br>";
     }
-    //komment megjelenítése
+    //komment megjelenítése, getComments függvény használata
     getComments($conn);
 ?>

@@ -35,8 +35,8 @@ if (isset($_REQUEST['page'])) {
 
 
 // ha be vagyok lépve
-
 if (!empty($_SESSION["id"])) {
+        //ha admin lép be
         if (isset($_SESSION['admin']) && $_SESSION['admin']==true) {
                 $menupontok = array(
                         'index' => "Főoldal",
@@ -45,10 +45,10 @@ if (!empty($_SESSION["id"])) {
                         'kilepes' => $kilep
                 );
         } else {
+                //ha átlag felhasználó lép be
                 $menupontok = array(
                         'index' => "Főoldal",
                         'profilom' => "Profilom",
-                        //'feltolt' => "Feltölt",
                         'kilepes' => $kilep
                 );
         }

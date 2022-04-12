@@ -16,6 +16,7 @@ echo"
 </div>";
 }
 echo "A felhasználók által értékelt eszköz ";
+//értékelés megjelenítése, getErtekel függvény használata
 getErtekel($conn);
 echo " pontot ért el.";
 ?>

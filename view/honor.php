@@ -3,6 +3,7 @@
 <body>
         <h1>Telefonok</h1>
         <ul id="link">
+                <!--márka szerinti link-->
                 <li><a href="index.php?page=iphone">Iphone</a></li>
                 <li><a href="index.php?page=xiaomi">Xiaomi</a></li>
                 <li><a href="index.php?page=huawei">Huawei</a></li>
@@ -16,6 +17,7 @@
 
 
 <?php
+//honor telefonok kilistázása
 $result = $conn->query("SELECT id, kep, nev, processzor, magok, sebesseg, ram, rom FROM tipusok WHERE markaId = 3");
 
 while ($row = $result->fetch_assoc()) {
