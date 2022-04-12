@@ -1,7 +1,7 @@
 <?php
 
     $result = $conn->query("SELECT marka FROM marka");
-
+    //feltöltő form elkészítése
     echo "
     <div class='feltolt'>
     <form action='".telefonfelvisz($conn)."' method='POST' enctype='multipart/form-data'>
@@ -23,13 +23,7 @@
     <input type='submit' class='btn-success' name='hozzaad' value='Hozzáad'>
     </form></div>";
 
-    //telefon felvitele az adatbázisba
-    
-
-    
-    
-    
-    
+    //telefon felvitele az adatbázisba, telefonfelvisz függvény, telefon képének feltöltése
     function telefonfelvisz($conn){
 
         $errors=array();
@@ -44,11 +38,11 @@
             $seb = $_POST['sebesseg'];
             $ram = $_POST['ram'];
             $rom = $_POST['rom'];
-            $name=$_FILES["profilepic"]['name'];
+            $name=$_FILES["kep"]['name'];
 
             if (isset($name) ) {
                 
-                $target_file = "pictures/".date("Y-m-d")."-".date("h-i-sa").basename($_FILES["profilepic"]["name"]);
+                $target_file = "pictures/".date("Y-m-d")."-".date("h-i-sa").basename($_FILES["kep"]["name"]);
                 
                 
                 if(empty($errors)){
@@ -66,3 +60,4 @@
             }$errors[]="Nincs fájl kiválasztva";
         }
     }
+?>

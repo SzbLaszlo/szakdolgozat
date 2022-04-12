@@ -12,7 +12,7 @@ function setComments($conn) {
         }
     }
 }
-//getComments függvény, komment megjelenítése
+//getComments függvény, komment megjelenítése mindenki számára
 function getComments($conn) {
     if(isset($_GET['id'])){
     $id = mysqli_real_escape_string($conn, $_GET['id']);
@@ -36,7 +36,7 @@ function getComments($conn) {
 }
 
 }
-//deleteComments függvény, komment törlése
+//deleteComments függvény, komment törlése/eltüntetése
 function deleteComments($conn) {
     if (isset($_POST['commentDelete'])){
         $cid = $_POST['cid'];

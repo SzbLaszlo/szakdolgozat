@@ -1,4 +1,5 @@
 <?php
+//felhasználói profil törlésének végrehajtása
 if(isset($_POST['igen'])){
     if(!empty($_SESSION['id'])){
         $id = $_SESSION['id'];
@@ -8,6 +9,7 @@ if(isset($_POST['igen'])){
         unset($_SESSION['felhasznalo']);
         header('Location: index.php?page=index');
     }
+    //ha mégse szeretné törölni akkor vissza visszük a profilom oldalra
 }else if(isset($_POST['nem'])){
     header('Location: index.php?page=profilom');
 }

@@ -10,6 +10,9 @@ if (isset($_POST['submitKeres']) && ($_POST['kereses'] != "")) {
         while ($row = mysqli_fetch_assoc($result)) {
 
 ?>
+    <!--
+    ha talált ilyen telefont akkor kiírása
+    -->
             <div id="telolink">
                 <a href="index.php?page=telefon&id=<?php echo ($row['id']); ?>">
                     <?php
@@ -28,9 +31,11 @@ if (isset($_POST['submitKeres']) && ($_POST['kereses'] != "")) {
 <?php
         }
     } else {
+        //ha nincs ilyen telefon
         echo "<div class='keresnincs'>Nincs ilyen találat.</div>";
     }
 } else {
+    //ha üresen hagyta a kereső mezőt
     echo "<div class='keresnincs'>Töltse ki a kereső mezőt!</div>";
 }
 ?>
